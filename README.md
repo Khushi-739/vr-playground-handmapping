@@ -5,8 +5,6 @@ This project aims to build a lightweight **VR playground experience for children
 The user can move their head (IMU rotation), interact with objects in a 3D virtual playground, and see simple responses such as **collisions, sound effects, and object reactions**.  
 The system captures a child’s hand in front of the mobile camera, estimates its position using a vision model, maps it into the Unity VR scene, and enables natural interaction with virtual objects.
 
-This prototype will serve as an early-stage demo toward child–computer interaction in immersive learning environments and will be presented as a **poster** at a future venue (NCT May–June 2026).
-
 ---
 
 ## 🎯 Project Objectives
@@ -16,8 +14,7 @@ This prototype will serve as an early-stage demo toward child–computer interac
 - Implement **real-time hand capture** using the phone camera and a simple vision model (e.g., MediaPipe or custom CV).
 - Map detected hand coordinates to a **3D virtual hand** inside the VR scene.
 - Enable **interaction with virtual objects** through collisions, sounds, and simple animations.
-- Prepare a **poster-ready demo** demonstrating IMU–vision fusion for interactive VR learning environments.
-
+  
 ---
 
 ## 🛠 Tech Stack
@@ -72,17 +69,8 @@ cd vr-playground
 
 ## 👥 Contributors
 
-- **Hyunjae Gil** — Project Mentor and VR/Interaction Design Lead  
+- **Hyunjae Gil** — Project Mentor 
 - **Sharvari Kamble** — ML Integrator, Unity Development, Vision–IMU Interaction Mapping  
-
-(Additional roles to be confirmed during the Dec 12 meeting.)
-
----
-
-## 📝 Meeting Notes
-> Meeting on **12 December, 2 PM KST**  
-**Notes Folder:** `/docs/meetings/`  
-_(To be updated after the first meeting)_
 
 ---
 
@@ -102,19 +90,8 @@ _(To be updated after the first meeting)_
 
 ---
 
-## 📄 Poster Venue
-- **NCT (May–June 2026)**  
-- Details will be added as venue confirmation progresses.
-
----
-
 ## 📎 Repository Roadmap Files
 - `README.md` – Project documentation  
-- `plan.md` – Milestones & timeline  
-- `docs/` – Meeting notes, diagrams, poster drafts (to be added)  
+- `docs/` – Meeting notes, diagrams (to be added)  
 
----
-
-## 📬 Contact
-For coordination, updates, and technical discussions, the primary communication will occur via scheduled meetings and GitHub issues.
 
