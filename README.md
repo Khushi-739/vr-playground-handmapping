@@ -43,7 +43,7 @@ The system captures a child’s hand in front of the mobile camera, estimates it
 
 ### 1. Clone Repository
 ```bash
-git clone <[repo-link](https://github.com/Khushi-739/vr-playground-handmapping)>
+git clone https://github.com/Khushi-739/vr-playground-handmapping
 cd vr-playground
 ```
 
