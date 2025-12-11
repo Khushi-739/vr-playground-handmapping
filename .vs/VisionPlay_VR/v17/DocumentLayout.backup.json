@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\khush\\VisionPlay_VR\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{27B43AC2-C6E6-0A01-8975-F514127BFDF1}|Assembly-CSharp.csproj|c:\\users\\khush\\visionplay_vr\\assets\\linecode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27B43AC2-C6E6-0A01-8975-F514127BFDF1}|Assembly-CSharp.csproj|solutionrelative:assets\\linecode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27B43AC2-C6E6-0A01-8975-F514127BFDF1}|Assembly-CSharp.csproj|C:\\Users\\khush\\VisionPlay_VR\\assets\\handgestures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27B43AC2-C6E6-0A01-8975-F514127BFDF1}|Assembly-CSharp.csproj|solutionrelative:assets\\handgestures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LineCode.cs",
+              "DocumentMoniker": "C:\\Users\\khush\\VisionPlay_VR\\Assets\\LineCode.cs",
+              "RelativeDocumentMoniker": "Assets\\LineCode.cs",
+              "ToolTip": "C:\\Users\\khush\\VisionPlay_VR\\Assets\\LineCode.cs",
+              "RelativeToolTip": "Assets\\LineCode.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T19:56:56.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HandGestures.cs",
+              "DocumentMoniker": "C:\\Users\\khush\\VisionPlay_VR\\Assets\\HandGestures.cs",
+              "RelativeDocumentMoniker": "Assets\\HandGestures.cs",
+              "ToolTip": "C:\\Users\\khush\\VisionPlay_VR\\Assets\\HandGestures.cs",
+              "RelativeToolTip": "Assets\\HandGestures.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T19:53:14.335Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
