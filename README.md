@@ -1,69 +1,122 @@
 # VR Playground Handmapping: Vision–IMU Based Interactive Virtual Environment for Children
 
-## 📌 Project Overview
-This project aims to build a lightweight **VR playground experience for children**, using a combination of **smartphone-based VR (Google Cardboard)**, **IMU sensor data**, and **basic hand-tracking using phone camera vision**.  
-The user can move their head (IMU rotation), interact with objects in a 3D virtual playground, and see simple responses such as **collisions, sound effects, and object reactions**.  
-The system captures a child’s hand in front of the mobile camera, estimates its position using a vision model, maps it into the Unity VR scene, and enables natural interaction with virtual objects.
+This project presents a tilt-based virtual reality playground that integrates computer-vision-based hand tracking, gesture recognition, and real-time data transmission to Unity applications. The system operates without Google Cardboard or traditional VR controllers. Instead, it relies on MediaPipe for hand landmark extraction and Unity for gesture-driven interaction.
 
 ---
 
-## 🎯 Project Objectives
+## 1. Overview
 
-- Build a **Unity-based VR playground** optimized for smartphones (Google Cardboard).
-- Integrate **IMU sensor data** to control camera orientation and movement.
-- Implement **real-time hand capture** using the phone camera and a simple vision model (e.g., MediaPipe or custom CV).
-- Map detected hand coordinates to a **3D virtual hand** inside the VR scene.
-- Enable **interaction with virtual objects** through collisions, sounds, and simple animations.
-  
----
-
-## 🛠 Tech Stack
-
-### Core
-- **Unity 3D**
-- **C# (Unity scripting)**
-- **Google Cardboard XR Plugin / Unity XR Management**
-- **Android Build Support**
-
-### Computer Vision
-- **MediaPipe Hands** (preferred)  
-  or  
-- Basic **OpenCV-based hand detection** (Unity WebcamTexture integration)
-
-### Sensors
-- Smartphone **IMU (accelerometer + gyroscope)**  
-  (Unity Input System / Device Sensors API)
-
-### Version Control
-- Git + GitHub repository (shared before Dec 12)
+The system enables users to interact with virtual objects through natural hand movements. A Python module performs hand detection and gesture analysis, while Unity receives and visualises the hand positions. The setup supports both **desktop (laptop Unity)** and **Android Unity builds**, allowing parallel real-time input from a single MediaPipe source.
 
 ---
 
-## 🚀 How to Run the Project
+## 2. Hand Tracking Pipeline (Python – MediaPipe)
 
-### 1. Clone Repository
-```bash
-git clone https://github.com/Khushi-739/vr-playground-handmapping
-cd vr-playground
+The hand tracking component uses MediaPipe Hands to detect **21 anatomical landmarks** for both the left and right hand. The pipeline includes:
+
+1. Webcam frame acquisition.
+2. Landmark detection and normalisation.
+3. Gesture classification, including:
+
+   * Pinch (thumb–index distance threshold)
+   * Open palm (finger-extension heuristic)
+   * Swipe (velocity-based directional analysis)
+4. Encoding of coordinates and gesture flags into a compact UDP packet.
+5. Transmission of the data to Unity clients.
+
+---
+
+## 3. Unity Integration
+
+Unity operates as the receiving and interaction layer. The system supports two-hand mapping and gesture-based object manipulation.
+
+### 3.1 Two-Hand Mapping
+
+* Unity receives UDP packets containing 21 × 2 landmark positions.
+* The coordinates are mapped to 3D models representing the user’s hands.
+* The project uses tilt-based rotation (gyro integration may be added later).
+
+### 3.2 Gesture-Driven Interactions
+
+The following interactions are supported:
+
+#### Pinch — Object Selection or Grabbing
+
+* A raycast originates from the palm direction.
+* If the ray intersects with an interactive object within a predefined distance:
+
+  * The object is parented to the hand’s transform.
+  * Physics may be temporarily disabled using `rb.isKinematic = true`.
+
+#### Open Palm — Object Release
+
+* Removes the parent–child relationship.
+* Restores physics properties.
+
+#### Swipe — Object Pushing
+
+* Direction is estimated from hand velocity.
+* The object struck by the raycast receives a force in the swipe direction.
+
+---
+
+## 4. Data Transmission Architecture (Dual Output)
+
+The system supports simultaneous output to two receivers.
+
+### 4.1 Architecture
+
+```
+Laptop Camera → Python MediaPipe → UDP → Laptop Unity
+                                     → UDP → Android Phone Unity
 ```
 
-### 2. Open in Unity
-- Install Unity **2021 LTS or higher**
-- Open project folder
-- Verify Google Cardboard / XR plugins enabled
+A single MediaPipe instance distributes identical hand-tracking data to both the desktop and the phone.
 
-### 3. Build for Android
-- Enable **XR Plugin Management → Cardboard**
-- Switch platform to **Android**
-- Build APK
-- Install APK on Android device
-- Insert phone into Google Cardboard viewer
+### 4.2 Python Implementation
 
-### 4. Using the Demo
-- Launch the app  
-- Move your head → VR camera rotates (IMU-based)  
-- Place hand in front of camera → virtual hand appears  
-- Touch playground objects → collision triggers reactions & sounds  
+To achieve dual transmission, the Python script sends the same UDP packet to two IP addresses:
+
+```python
+PHONE_IP = "192.168.x.x"   # Android device IP
+LAPTOP_IP = "192.168.x.x"  # Laptop IP (same network)
+PORT = 5052
+
+# Dual-output transmission
+sock.sendto(message, (PHONE_IP, PORT))
+sock.sendto(message, (LAPTOP_IP, PORT))
+```
+
+Ensure that both devices are connected to the same Wi-Fi network.
+
+Laptop IP can be retrieved using:
+
+```
+ipconfig → IPv4 Address
+```
+
+---
+
+## 5. APK Distribution
+
+A prebuilt Android package is available in the repository:
+
+**Repository Path:** `Builds/Build.apk`
+
+The APK can be installed on any Android device. After installation, update the `main.py` IP settings according to the device and laptop used.
+
+This enables direct deployment without rebuilding the Unity project.
+
+---
+
+## 6. System Flow Summary
+
+1. Laptop camera captures hand images.
+2. Python MediaPipe performs landmark detection.
+3. Gesture classification is applied.
+4. Dual-output UDP packets are transmitted.
+5. Unity (desktop and Android) receives and reconstructs hand poses.
+6. Unity applies gesture rules for object interaction.
 
 ---
 
@@ -72,26 +125,9 @@ cd vr-playground
 - **Hyunjae Gil** — Project Mentor 
 - **Sharvari Kamble** — ML Integrator, Unity Development, Vision–IMU Interaction Mapping  
 
----
-
-## 📅 Milestones (High-Level)
-1. **Unity Playground Scene Setup**  
-   – Basic environment, VR camera rig, object prefabs  
-2. **IMU Integration**  
-   – Map smartphone rotation + acceleration to VR camera  
-3. **Vision Module**  
-   – Hand detection → coordinate extraction → smoothing  
-4. **Hand-to-VR Mapping**  
-   – Visual hand model inside Unity  
-5. **Interaction System**  
-   – Collisions, sound triggers, basic physics feedback  
-6. **Poster Demo Build**  
-   – Stable APK + poster figures + video recording  
-
----
 
 ## 📎 Repository Roadmap Files
 - `README.md` – Project documentation  
-- `docs/` – Meeting notes, diagrams (to be added)  
+- `asset/` – c# and python files 
 
 
