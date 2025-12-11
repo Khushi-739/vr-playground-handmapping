@@ -123,7 +123,7 @@ This enables direct deployment without rebuilding the Unity project.
 ## 👥 Contributors
 
 - **Hyunjae Gil** — Project Mentor 
-- **Sharvari Kamble** — ML Integrator, Unity Development, Vision–IMU Interaction Mapping  
+- **Sharvari Kamble** — ML Integrator, Unity Development
 
 
 ## 📎 Repository Roadmap Files
