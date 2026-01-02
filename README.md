@@ -1,4 +1,4 @@
-# VR Playground Handmapping: Vision–IMU Based Interactive Virtual Environment for Children
+# VR Playground Handmapping: Vision Based Interactive Virtual Environment for Children
 
 This project presents a tilt-based virtual reality playground that integrates computer-vision-based hand tracking, gesture recognition, and real-time data transmission to Unity applications. The system operates without Google Cardboard or traditional VR controllers. Instead, it relies on MediaPipe for hand landmark extraction and Unity for gesture-driven interaction.
 
