@@ -123,7 +123,7 @@ This enables direct deployment without rebuilding the Unity project.
 ## 👥 Contributors
 
 - **Hyunjae Gil** — Project Mentor 
-- **Sharvari Kamble** — ML Integrator, Unity Development
+- **Sharvari Kamble** — Unity Development
 
 
 https://github.com/user-attachments/assets/22dc7e0c-dc38-45e8-937c-844a1e550905
